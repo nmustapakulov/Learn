@@ -21,7 +21,7 @@ int[] gregorScores = [91, 91, 91, 91, 91, 91, 91];
 string[] studentNames = ["Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor"];
 int[] studentScores = new int[10];
 
-Console.WriteLine("Student\t\tGrade\n");
+Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
 
 foreach (string name in studentNames)
 {
@@ -110,7 +110,7 @@ foreach (string name in studentNames)
     else
         currentStudentLetterGrade = "F";
 
-    Console.WriteLine($"{currentStudent}:\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
 }
 
 Console.WriteLine("Press the Enter key to continue");
