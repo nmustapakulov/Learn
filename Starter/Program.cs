@@ -21,7 +21,7 @@ int[] gregorScores = [91, 91, 91, 91, 91, 91, 91];
 string[] studentNames = ["Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor"];
 int[] studentScores = new int[10];
 
-Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
+Console.WriteLine("Student\t\tExam Score\tOverall\tGrade\tExtra Credit\n");
 
 foreach (string name in studentNames)
 {
@@ -53,23 +53,37 @@ foreach (string name in studentNames)
         studentScores = gregorScores;
 
     int sumAssignmentScores = 0;
+    int sumExtraCreditScores = 0;
+
+    decimal totalGrade = 0;
 
     decimal currentStudentGrade;
+    decimal currentStudentExamGrade;
+    decimal currentCreditAverage;
 
     int gradedAssignments = 0;
+    int extraAssignmentsCount = 0;
 
     foreach (int score in studentScores)
     {
         gradedAssignments += 1;
 
-        if (gradedAssignments <= examAssignments)
+        if (gradedAssignments <= examAssignments) 
+        {
             sumAssignmentScores += score;
-        
-        else
-            sumAssignmentScores += score / 10;
+            totalGrade += score;
+        }
+        else 
+        {
+            totalGrade += (decimal) score / 10;
+            sumExtraCreditScores += score;
+            extraAssignmentsCount += 1;
+        }
     }
 
-    currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+    currentStudentExamGrade = (decimal)(sumAssignmentScores) / examAssignments;
+    currentStudentGrade = totalGrade / examAssignments;
+    currentCreditAverage = (decimal) sumExtraCreditScores / extraAssignmentsCount;
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
@@ -110,7 +124,7 @@ foreach (string name in studentNames)
     else
         currentStudentLetterGrade = "F";
 
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentExamGrade}\t\t{currentStudentGrade:F2}\t{currentStudentLetterGrade}\t{currentCreditAverage} ({currentStudentGrade - currentStudentExamGrade} pts)");
 }
 
 Console.WriteLine("Press the Enter key to continue");
