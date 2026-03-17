@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/StudentGradingApp/">
+    <Project Path="StudentGradingApp/StudentGradingApp.csproj" />
+  </Folder>
+</Solution>
